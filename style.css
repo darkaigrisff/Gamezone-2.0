@@ -1,0 +1,445 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    min-height: 100%;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #39105f 0%,
+            #1a0929 42%,
+            #09030f 100%
+        );
+}
+
+
+/* =====================================
+   PAGE
+===================================== */
+
+.login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px 15px;
+
+}
+
+
+/* =====================================
+   CARTE
+===================================== */
+
+.auth-container {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 30px 25px;
+
+    background:
+        rgba(18, 8, 31, 0.95);
+
+    border:
+        1px solid rgba(172, 70, 255, 0.45);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 25px rgba(139, 0, 255, 0.25),
+        0 0 70px rgba(80, 0, 150, 0.15);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo {
+
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+
+    color: white;
+
+    text-shadow:
+        0 0 8px #9d00ff,
+        0 0 18px #8a00ff,
+        0 0 30px rgba(157, 0, 255, 0.7);
+
+}
+
+
+/* =====================================
+   SOUS-TITRE
+===================================== */
+
+.subtitle {
+
+    text-align: center;
+
+    color: #bca9d4;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =====================================
+   GROUPE INPUT
+===================================== */
+
+.input-group {
+
+    margin-bottom: 16px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #eadcff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================
+   INPUT
+===================================== */
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border:
+        1px solid #4c2b66;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background:
+        #10091a;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+
+}
+
+
+.input-group input::placeholder {
+
+    color: #756481;
+
+}
+
+
+.input-group input:focus {
+
+    border-color:
+        #a600ff;
+
+    box-shadow:
+        0 0 10px rgba(166, 0, 255, 0.4);
+
+}
+
+
+/* =====================================
+   MESSAGE SOUS LES INPUTS
+===================================== */
+
+.field-message {
+
+    min-height: 18px;
+
+    margin-top: 6px;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+}
+
+
+/* =====================================
+   MESSAGE GENERAL
+===================================== */
+
+.message {
+
+    min-height: 25px;
+
+    margin:
+        8px 0 14px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================
+   BOUTON PRINCIPAL
+===================================== */
+
+.main-button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8500ff,
+            #c000ff
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(160, 0, 255, 0.35);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.main-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 0 25px rgba(180, 0, 255, 0.55);
+
+}
+
+
+.main-button:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* =====================================
+   BOUTON SIGNUP / RETOUR
+===================================== */
+
+.signup-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border:
+        1px solid #00ff9d;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 255, 157, 0.07);
+
+    color:
+        #00ff9d;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.signup-button:hover {
+
+    background:
+        rgba(0, 255, 157, 0.15);
+
+    box-shadow:
+        0 0 15px rgba(0, 255, 157, 0.25);
+
+}
+
+
+.signup-button:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* =====================================
+   SEPARATEUR
+===================================== */
+
+.separator {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 18px 0;
+
+}
+
+
+.separator::before,
+.separator::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        #392447;
+
+}
+
+
+.separator span {
+
+    color:
+        #806c91;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+    .login-page {
+
+        padding:
+            18px 12px;
+
+    }
+
+
+    .auth-container {
+
+        padding:
+            25px 18px;
+
+        border-radius:
+            17px;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            26px;
+
+    }
+
+
+    .subtitle {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .input-group input {
+
+        padding:
+            13px;
+
+    }
+
+}

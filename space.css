@@ -1,0 +1,1197 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050711;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+button {
+    border: 0;
+    outline: 0;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#gameRoot {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: #050711;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+}
+
+.screen.active {
+    display: block;
+}
+
+
+/* =========================================================
+   LOBBY
+========================================================= */
+
+#lobbyScreen {
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(85, 52, 170, .25),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #04050d,
+            #0b0e20 55%,
+            #050711
+        );
+}
+
+.spaceStars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(170,190,255,.7) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        90px 90px,
+        150px 150px;
+
+    background-position:
+        20px 20px,
+        60px 70px;
+
+    opacity: .6;
+}
+
+.lobbyPlanet {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.planetOne {
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    top: 5%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #6672a0,
+            #282c55 55%,
+            #101326
+        );
+
+    box-shadow:
+        0 0 100px rgba(75,95,200,.25);
+}
+
+.planetTwo {
+    width: 130px;
+    height: 130px;
+    left: -40px;
+    bottom: 5%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #8d5a9e,
+            #301d4d 65%,
+            #120a1c
+        );
+}
+
+.lobbyContent {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 92%);
+    height: 100%;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameLogo {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.logoSmall {
+    font-size: 12px;
+    letter-spacing: 6px;
+    opacity: .6;
+    margin-bottom: 8px;
+}
+
+.gameLogo h1 {
+    font-size: clamp(42px, 8vw, 85px);
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+.gameLogo h1 span {
+    color: #8f5cff;
+}
+
+.logoLine {
+    width: 150px;
+    height: 3px;
+    margin: 10px auto;
+
+    background: #8f5cff;
+
+    box-shadow:
+        0 0 20px #8f5cff;
+}
+
+.gameLogo p {
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: .55;
+}
+
+.lobbyPanel {
+    width: min(440px, 100%);
+    padding: 26px;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,29,58,.94),
+            rgba(8,10,23,.94)
+        );
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.55);
+}
+
+.panelTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.panelTitle span {
+    width: 35px;
+    height: 1px;
+    background: rgba(255,255,255,.25);
+}
+
+.panelDescription {
+    margin: 17px 0;
+
+    text-align: center;
+
+    color: #bfc4df;
+
+    line-height: 1.55;
+    font-size: 13px;
+}
+
+.currencyPreview {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 20px 0;
+}
+
+.currencyItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.coinIcon,
+.fragmentIcon {
+    display: grid;
+    place-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    font-weight: 900;
+}
+
+.coinIcon {
+    background: #e8b629;
+    color: #4c3500;
+}
+
+.fragmentIcon {
+    color: #c77cff;
+}
+
+.mainButton {
+    width: 100%;
+    min-height: 54px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7848ff,
+            #a85cff
+        );
+
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 8px 30px rgba(128,74,255,.3);
+
+    transition: transform .12s, filter .12s;
+}
+
+.mainButton b {
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.mainButton:active {
+    transform: scale(.97);
+}
+
+.mainButton:hover {
+    filter: brightness(1.12);
+}
+
+.lobbyFooter {
+    margin-top: 22px;
+
+    display: flex;
+    gap: 10px;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+
+    opacity: .4;
+}
+
+
+/* =========================================================
+   MENUS
+========================================================= */
+
+#chapterScreen,
+#levelScreen {
+    background: #070916;
+}
+
+.screenBackground {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(98,57,190,.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(25,95,190,.15),
+            transparent 30%
+        );
+}
+
+.menuHeader {
+    position: relative;
+    z-index: 3;
+
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 0 25px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(5,7,18,.78);
+
+    backdrop-filter: blur(15px);
+}
+
+.menuHeader small {
+    color: #8d95b8;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.menuHeader h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.backButton {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.07);
+
+    font-size: 30px;
+}
+
+.backButton:active {
+    transform: scale(.94);
+}
+
+.menuCurrency {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.06);
+}
+
+.menuCurrency span {
+    color: #ffd33d;
+    font-weight: 900;
+}
+
+.chapterGrid {
+    position: relative;
+    z-index: 2;
+
+    width: min(1050px, 94%);
+    height: calc(100% - 90px);
+
+    margin: auto;
+    padding: 25px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    overflow-y: auto;
+}
+
+.chapterCard {
+    position: relative;
+
+    min-height: 150px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            140deg,
+            rgba(27,31,58,.95),
+            rgba(10,12,27,.95)
+        );
+
+    transition: transform .18s, border-color .18s;
+}
+
+.chapterCard:active {
+    transform: scale(.98);
+}
+
+.chapterCard.selected {
+    border-color: #8458ff;
+
+    box-shadow:
+        0 0 30px rgba(126,75,255,.12);
+}
+
+.chapterNumber {
+    position: absolute;
+    right: 12px;
+    top: 7px;
+
+    font-size: 55px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,.025);
+}
+
+.chapterIcon {
+    width: 70px;
+    height: 70px;
+
+    display: grid;
+    place-items: center;
+
+    margin-right: 18px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,.07);
+
+    font-size: 34px;
+}
+
+.chapterInfo {
+    position: relative;
+    z-index: 2;
+}
+
+.chapterInfo small {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #9677ff;
+}
+
+.chapterInfo h3 {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.chapterInfo p {
+    color: #858da9;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.chapterArrow {
+    margin-left: auto;
+    font-size: 30px;
+    opacity: .35;
+}
+
+.bossChapter {
+    border-color: rgba(190,75,255,.22);
+}
+
+
+/* =========================================================
+   LEVELS
+========================================================= */
+
+.levelIntro {
+    position: relative;
+    z-index: 2;
+
+    width: min(1050px, 94%);
+
+    margin: 15px auto;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.04);
+}
+
+.selectedChapterIcon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.07);
+
+    font-size: 25px;
+}
+
+.levelIntro span {
+    color: #9b82ff;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.levelIntro p {
+    margin-top: 3px;
+    color: #9299b5;
+    font-size: 12px;
+}
+
+.levelGrid {
+    position: relative;
+    z-index: 2;
+
+    width: min(1050px, 94%);
+    height: calc(100% - 180px);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 12px;
+
+    overflow-y: auto;
+
+    padding-bottom: 25px;
+}
+
+.levelCard {
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1e38,
+            #0b0d1d
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    transition: transform .12s;
+}
+
+.levelCard:active {
+    transform: scale(.94);
+}
+
+.levelCard .levelNumber {
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.levelCard small {
+    margin-top: 5px;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    color: #777f9d;
+}
+
+.levelCard.bossLevel {
+    border-color: rgba(211,81,255,.5);
+
+    background:
+        linear-gradient(
+            145deg,
+            #281238,
+            #0e0817
+        );
+}
+
+.levelCard.bossLevel .levelNumber {
+    color: #d67cff;
+}
+
+.levelCard.locked {
+    opacity: .38;
+}
+
+
+/* =========================================================
+   GAME CANVAS
+========================================================= */
+
+.gameScreen {
+    background: #050711;
+}
+
+#gameCanvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+.hud {
+    position: absolute;
+    z-index: 10;
+
+    inset: 0 0 auto 0;
+
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 18px;
+
+    pointer-events: none;
+}
+
+.hudTopLeft,
+.hudTopRight,
+.hudCenter {
+    pointer-events: auto;
+}
+
+.playerHealth {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hudCharacter {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background: rgba(15,17,34,.85);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+}
+
+.healthBox {
+    width: 125px;
+}
+
+.healthText {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 9px;
+    margin-bottom: 4px;
+}
+
+.healthText span {
+    color: #ff7373;
+}
+
+.healthText strong {
+    font-size: 8px;
+    opacity: .7;
+}
+
+.healthBar {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.12);
+}
+
+#healthFill {
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4757,
+            #ff7b66
+        );
+}
+
+.hudCenter {
+    position: absolute;
+
+    left: 50%;
+    top: 14px;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+#chapterHud {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: #8c95ba;
+}
+
+#levelHud {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.hudTopRight {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hudCurrency {
+    min-width: 60px;
+
+    padding: 7px 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    border-radius: 9px;
+
+    background: rgba(5,7,18,.72);
+}
+
+.hudCurrency span {
+    color: #ffd536;
+    font-weight: 900;
+}
+
+.hudCurrency.purple span {
+    color: #bd70ff;
+}
+
+.hudCurrency strong {
+    font-size: 10px;
+}
+
+.pauseButton {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+
+    background: rgba(5,7,18,.8);
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   CONTROLES
+========================================================= */
+
+#controls {
+    position: absolute;
+    z-index: 20;
+
+    left: 0;
+    right: 0;
+    bottom: 12px;
+
+    height: 145px;
+
+    pointer-events: none;
+}
+
+.dpad,
+.actionButtons {
+    pointer-events: auto;
+}
+
+.dpad {
+    position: absolute;
+
+    left: 18px;
+    bottom: 5px;
+
+    width: 130px;
+    height: 75px;
+}
+
+.control {
+    position: absolute;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38,43,70,.94),
+            rgba(15,18,35,.94)
+        );
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35);
+
+    font-weight: 900;
+
+    transition:
+        transform .07s,
+        background .07s;
+}
+
+.control.pressed {
+    transform: scale(.9);
+
+    background:
+        rgba(122,79,220,.8);
+}
+
+.dpad .control {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+}
+
+.dpad .left {
+    left: 0;
+    top: 10px;
+}
+
+.dpad .right {
+    right: 0;
+    top: 10px;
+}
+
+.actionButtons {
+    position: absolute;
+
+    right: 18px;
+    bottom: 0;
+
+    width: 225px;
+    height: 125px;
+}
+
+.jumpButton,
+.attackButton {
+    border-radius: 50%;
+}
+
+.jumpButton {
+    width: 72px;
+    height: 72px;
+
+    right: 130px;
+    top: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3b6bca,
+            #263d79
+        );
+
+    font-size: 10px;
+}
+
+.attackButton {
+    width: 100px;
+    height: 100px;
+
+    right: 0;
+    top: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b13f62,
+            #68273e
+        );
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   OVERLAYS
+========================================================= */
+
+.overlay {
+    position: absolute;
+    z-index: 30;
+
+    inset: 0;
+
+    display: none;
+    place-items: center;
+
+    background:
+        rgba(2,3,10,.72);
+
+    backdrop-filter: blur(8px);
+}
+
+.overlay.show {
+    display: grid;
+}
+
+.pausePanel,
+.resultPanel {
+    width: min(390px, 90%);
+
+    padding: 28px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #191d37,
+            #080a17
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55);
+}
+
+.pauseTitle,
+.resultTitle {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    margin-bottom: 22px;
+}
+
+.secondaryButton {
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 10px;
+
+    border-radius: 11px;
+
+    background: rgba(255,255,255,.07);
+
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.resultIcon {
+    font-size: 60px;
+    margin-bottom: 10px;
+
+    color: #ffd84d;
+}
+
+.resultPanel p {
+    color: #8f96b3;
+    margin-bottom: 20px;
+}
+
+.rewardBox {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.rewardBox div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.rewardBox div:first-child span {
+    color: #ffd333;
+}
+
+.rewardBox div:last-child span {
+    color: #c36fff;
+}
+
+
+/* =========================================================
+   ORIENTATION
+========================================================= */
+
+#orientationWarning {
+    display: none;
+
+    position: fixed;
+    z-index: 100;
+
+    inset: 0;
+
+    background: #060711;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.rotateIcon {
+    font-size: 70px;
+    margin-top: 20vh;
+}
+
+#orientationWarning h2 {
+    font-size: 20px;
+}
+
+#orientationWarning p {
+    margin-top: 10px;
+    color: #8d95b0;
+}
+
+@media (orientation: portrait) and (max-width: 700px) {
+
+    #orientationWarning {
+        display: block;
+    }
+
+    #gameRoot > .screen {
+        display: none !important;
+    }
+
+    #gameScreen {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .chapterGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .chapterCard {
+        min-height: 125px;
+    }
+
+    .levelGrid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+    .hud {
+        padding: 8px;
+    }
+
+    .healthBox {
+        width: 105px;
+    }
+
+    .dpad {
+        left: 10px;
+    }
+
+    .actionButtons {
+        right: 10px;
+    }
+}
+
+@media (max-height: 500px) {
+
+    .hud {
+        height: 65px;
+    }
+
+    #controls {
+        height: 115px;
+        bottom: 4px;
+    }
+
+    .dpad {
+        transform: scale(.86);
+        transform-origin: left bottom;
+    }
+
+    .actionButtons {
+        transform: scale(.86);
+        transform-origin: right bottom;
+    }
+
+    .lobbyPanel {
+        padding: 18px;
+    }
+
+    .gameLogo {
+        margin-bottom: 12px;
+    }
+
+    .gameLogo h1 {
+        font-size: 42px;
+    }
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>GAME ZONE — Speed Race</title>
+
+    <link rel="stylesheet" href="speed.css">
+</head>
+
+<body>
+
+<div id="speedGame">
+
+    <!-- =====================================================
+         LOBBY
+         ===================================================== -->
+
+    <section id="lobby" class="screen active">
+
+        <div class="lobbyBackground"></div>
+        <div class="speedGlow"></div>
+
+        <div class="lobbyContent">
+
+            <div class="gameLogo">
+
+                <div class="logoSmall">
+                    GAME ZONE
+                </div>
+
+                <h1>
+                    SPEED
+                    <span>RACE</span>
+                </h1>
+
+                <div class="logoLine"></div>
+
+                <p>
+                    RACING CHAMPIONSHIP
+                </p>
+
+            </div>
+
+            <div class="lobbyPanel">
+
+                <div class="panelTitle">
+                    <span></span>
+                    SPEED RACE
+                    <span></span>
+                </div>
+
+                <p class="panelDescription">
+                    Choisis ta voiture, entre sur le circuit
+                    et bats tes adversaires.
+                </p>
+
+                <div class="lobbyStats">
+
+                    <div>
+                        <span>💰</span>
+                        <strong id="lobbyCoins">0</strong>
+                        <small>COINS</small>
+                    </div>
+
+                    <div>
+                        <span>🏎️</span>
+                        <strong>8</strong>
+                        <small>VOITURES</small>
+                    </div>
+
+                    <div>
+                        <span>🏁</span>
+                        <strong>3</strong>
+                        <small>CIRCUITS</small>
+                    </div>
+
+                </div>
+
+                <button
+                    id="startButton"
+                    class="mainButton"
+                    type="button"
+                >
+                    <span>COMMENCER</span>
+                    <b>›</b>
+                </button>
+
+                <div class="lobbyActions">
+
+                    <button
+                        id="garageButton"
+                        class="secondaryButton"
+                        type="button"
+                    >
+                        🚗 GARAGE
+                    </button>
+
+                    <button
+                        id="shopButton"
+                        class="secondaryButton"
+                        type="button"
+                    >
+                        🛒 BOUTIQUE
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="lobbyFooter">
+                GAME ZONE • SPEED RACE
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CIRCUITS
+         ===================================================== -->
+
+    <section id="tracks" class="screen">
+
+        <div class="menuBackground"></div>
+
+        <header class="menuHeader">
+
+            <button
+                class="backButton"
+                data-back="lobby"
+                type="button"
+            >
+                ‹
+            </button>
+
+            <div>
+                <small>SPEED RACE</small>
+                <h2>CHOISIR UN CIRCUIT</h2>
+            </div>
+
+            <div class="menuCoins">
+                💰 <strong id="trackCoins">0</strong>
+            </div>
+
+        </header>
+
+        <main id="trackGrid" class="trackGrid"></main>
+
+    </section>
+
+
+    <!-- =====================================================
+         GARAGE
+         ===================================================== -->
+
+    <section id="garage" class="screen">
+
+        <div class="menuBackground"></div>
+
+        <header class="menuHeader">
+
+            <button
+                class="backButton"
+                data-back="lobby"
+                type="button"
+            >
+                ‹
+            </button>
+
+            <div>
+                <small>SPEED RACE</small>
+                <h2>GARAGE</h2>
+            </div>
+
+            <div class="menuCoins">
+                💰 <strong id="garageCoins">0</strong>
+            </div>
+
+        </header>
+
+        <div class="garageLayout">
+
+            <div class="garagePreview">
+
+                <canvas
+                    id="garageCanvas"
+                    width="700"
+                    height="350"
+                ></canvas>
+
+                <h2 id="garageCarName">
+                    Long Cruiser
+                </h2>
+
+                <div class="garageStats">
+
+                    <div>
+                        <span>VITESSE</span>
+                        <strong id="garageSpeed">
+                            170 km/h
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>ACCÉLÉRATION</span>
+                        <strong id="garageAccel">
+                            20
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>ADHÉRENCE</span>
+                        <strong id="garageGrip">
+                            78
+                        </strong>
+                    </div>
+
+                </div>
+
+                <button
+                    id="selectCarButton"
+                    class="mainButton"
+                    type="button"
+                >
+                    VOITURE SÉLECTIONNÉE
+                </button>
+
+            </div>
+
+            <div
+                id="garageCars"
+                class="carGrid"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOUTIQUE
+         ===================================================== -->
+
+    <section id="shop" class="screen">
+
+        <div class="menuBackground"></div>
+
+        <header class="menuHeader">
+
+            <button
+                class="backButton"
+                data-back="lobby"
+                type="button"
+            >
+                ‹
+            </button>
+
+            <div>
+                <small>SPEED RACE</small>
+                <h2>BOUTIQUE</h2>
+            </div>
+
+            <div class="menuCoins">
+                💰 <strong id="shopCoins">0</strong>
+            </div>
+
+        </header>
+
+        <main
+            id="shopCars"
+            class="shopGrid"
+        ></main>
+
+    </section>
+
+
+    <!-- =====================================================
+         COURSE
+         ===================================================== -->
+
+    <section id="race" class="screen raceScreen">
+
+        <canvas id="raceCanvas"></canvas>
+
+        <!-- HUD -->
+
+        <div class="raceHud">
+
+            <div class="hudLeft">
+
+                <div class="positionBox">
+
+                    <small>POSITION</small>
+
+                    <strong id="positionNumber">
+                        1
+                    </strong>
+
+                    <span>
+                        / 8
+                    </span>
+
+                </div>
+
+                <div class="lapBox">
+
+                    <small>TOUR</small>
+
+                    <strong id="lapText">
+                        1 / 3
+                    </strong>
+
+                    <div class="lapBar">
+                        <div id="lapFill"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hudCenter">
+
+                <strong id="raceTrackName">
+                    SUNSET GRAND PRIX
+                </strong>
+
+                <small id="raceCarName">
+                    Long Cruiser
+                </small>
+
+            </div>
+
+
+            <div class="hudRight">
+
+                <div class="speedBox">
+
+                    <strong id="speedText">
+                        0
+                    </strong>
+
+                    <span>
+                        KM/H
+                    </span>
+
+                </div>
+
+                <div class="raceCoins">
+                    💰
+                    <strong id="raceCoins">
+                        0
+                    </strong>
+                </div>
+
+                <button
+                    id="pauseRaceButton"
+                    class="pauseButton"
+                    type="button"
+                >
+                    II
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- NITRO -->
+
+        <div class="nitroHud">
+
+            <div class="nitroTitle">
+                ⚡ NITRO
+            </div>
+
+            <div class="nitroBar">
+                <div id="nitroFill"></div>
+            </div>
+
+            <small>
+                SHIFT / N
+            </small>
+
+        </div>
+
+
+        <!-- CONTROLES -->
+
+        <div
+            id="raceControls"
+            class="raceControls"
+        >
+
+            <div class="steeringControls">
+
+                <button
+                    id="steerLeft"
+                    class="controlButton steering"
+                    type="button"
+                >
+                    ◀
+                </button>
+
+                <button
+                    id="steerRight"
+                    class="controlButton steering"
+                    type="button"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+
+            <div class="drivingControls">
+
+                <button
+                    id="brakeButton"
+                    class="controlButton brake"
+                    type="button"
+                >
+                    <span>■</span>
+                    FREIN
+                </button>
+
+                <button
+                    id="nitroButton"
+                    class="controlButton nitroButton"
+                    type="button"
+                >
+                    ⚡
+                    NITRO
+                </button>
+
+                <button
+                    id="acceleratorButton"
+                    class="controlButton accelerator"
+                    type="button"
+                >
+                    ▲
+                    ACCÉLÉRER
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAUSE -->
+
+        <div
+            id="pauseOverlay"
+            class="overlay"
+        >
+
+            <div class="overlayPanel">
+
+                <h2>JEU EN PAUSE</h2>
+
+                <button
+                    id="resumeButton"
+                    class="mainButton"
+                    type="button"
+                >
+                    REPRENDRE
+                </button>
+
+                <button
+                    id="restartButton"
+                    class="secondaryButton"
+                    type="button"
+                >
+                    RECOMMENCER
+                </button>
+
+                <button
+                    id="quitButton"
+                    class="secondaryButton"
+                    type="button"
+                >
+                    QUITTER
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- RÉSULTAT -->
+
+        <div
+            id="resultOverlay"
+            class="overlay"
+        >
+
+            <div class="resultPanel">
+
+                <div
+                    id="resultIcon"
+                    class="resultIcon"
+                >
+                    🥇
+                </div>
+
+                <h2 id="resultTitle">
+                    VICTOIRE !
+                </h2>
+
+                <p id="resultMessage">
+                    Tu as terminé la course !
+                </p>
+
+                <div class="rewardBox">
+
+                    <span>RÉCOMPENSE</span>
+
+                    <strong>
+                        💰
+                        <b id="rewardCoins">0</b>
+                    </strong>
+
+                </div>
+
+                <button
+                    id="nextRaceButton"
+                    class="mainButton"
+                    type="button"
+                >
+                    COURSE SUIVANTE ›
+                </button>
+
+                <button
+                    id="returnTracksButton"
+                    class="secondaryButton"
+                    type="button"
+                >
+                    CHOISIR UN CIRCUIT
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="speed.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1260 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#071522;
+
+    color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    user-select:none;
+}
+
+
+body{
+    touch-action:none;
+}
+
+
+button{
+
+    border:0;
+    outline:0;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    touch-action:none;
+}
+
+
+#world{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loading{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #173a5c 0%,
+            #071522 65%,
+            #030910 100%
+        );
+}
+
+
+.logo{
+
+    font-size:54px;
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    text-align:center;
+}
+
+
+.logo strong{
+
+    display:block;
+
+    color:#43b9ff;
+}
+
+
+.subtitle{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    letter-spacing:4px;
+
+    opacity:.8;
+}
+
+
+.loadBox{
+
+    width:min(
+        420px,
+        75vw
+    );
+
+    height:9px;
+
+    margin-top:35px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#172a3b;
+
+    box-shadow:
+        0 0 20px #000;
+}
+
+
+#loadBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #269cff,
+            #62ddff
+        );
+
+    transition:
+        width .08s linear;
+}
+
+
+#loadText{
+
+    margin-top:14px;
+
+    font-size:13px;
+
+    opacity:.8;
+}
+
+
+/* =========================
+   HUD
+========================= */
+
+#hud{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10;
+
+    pointer-events:none;
+}
+
+
+.profile,
+.stats,
+.money,
+#compass,
+#menuButton,
+#questTracker,
+#interaction,
+#controls{
+
+    pointer-events:auto;
+}
+
+
+.profile{
+
+    position:absolute;
+
+    top:16px;
+    left:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px 12px;
+
+    border-radius:14px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .82
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.avatar{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #208cff,
+            #7c3cff
+        );
+
+    font-weight:900;
+}
+
+
+.profileInfo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+    font-size:13px;
+}
+
+
+.profileInfo span{
+
+    opacity:.75;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    position:absolute;
+
+    top:17px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:min(
+        280px,
+        42vw
+    );
+}
+
+
+.statBar{
+
+    position:relative;
+
+    height:18px;
+
+    margin-bottom:6px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#162432;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+}
+
+
+.statBar div{
+
+    width:0%;
+
+    height:100%;
+
+    transition:
+        width .2s;
+}
+
+
+.statBar span{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    text-shadow:
+        0 1px 3px #000;
+}
+
+
+.hp div{
+
+    background:#e63b4c;
+}
+
+
+.xp div{
+
+    background:#31a9ff;
+}
+
+
+/* =========================
+   MONEY
+========================= */
+
+.money{
+
+    position:absolute;
+
+    top:22px;
+
+    right:80px;
+
+    padding:10px 14px;
+
+    border-radius:12px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .82
+        );
+
+    font-size:14px;
+}
+
+
+/* =========================
+   COMPASS
+========================= */
+
+#compass{
+
+    position:absolute;
+
+    top:78px;
+
+    right:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:7px 10px;
+
+    border-radius:14px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .78
+        );
+}
+
+
+.compassCircle{
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border:
+        2px solid
+        rgba(
+            255,
+            255,
+            255,
+            .5
+        );
+
+    border-radius:50%;
+}
+
+
+#compassArrow{
+
+    font-size:18px;
+
+    transition:
+        transform .15s linear;
+}
+
+
+.destination{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-width:100px;
+}
+
+
+.destination b{
+
+    font-size:11px;
+}
+
+
+.destination span{
+
+    margin-top:2px;
+
+    font-size:10px;
+
+    opacity:.65;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+#menuButton{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:48px;
+    height:48px;
+
+    border-radius:14px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .9
+        );
+
+    color:white;
+
+    font-size:24px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+}
+
+
+/* =========================
+   QUEST
+========================= */
+
+#questTracker{
+
+    position:absolute;
+
+    top:120px;
+
+    left:18px;
+
+    width:220px;
+
+    padding:12px;
+
+    border-radius:13px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .78
+        );
+
+    border-left:
+        4px solid
+        #ffbd45;
+}
+
+
+.questHeader{
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    color:#ffca5c;
+
+    margin-bottom:5px;
+}
+
+
+#questName{
+
+    display:block;
+
+    font-size:13px;
+}
+
+
+#questProgress{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    opacity:.7;
+}
+
+
+/* =========================
+   INTERACTION
+========================= */
+
+#interaction{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:145px;
+
+    transform:
+        translateX(-50%);
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:5px;
+
+    min-width:180px;
+
+    padding:10px;
+
+    border-radius:14px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .9
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .15
+        );
+}
+
+
+#interaction small{
+
+    font-size:9px;
+
+    opacity:.55;
+}
+
+
+#interactionText{
+
+    font-size:14px;
+}
+
+
+#interactionButton{
+
+    margin-top:4px;
+
+    padding:8px 20px;
+
+    border-radius:9px;
+
+    background:#299eff;
+
+    color:white;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+#controls{
+
+    position:absolute;
+
+    left:18px;
+    right:18px;
+
+    bottom:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+}
+
+
+.dpad{
+
+    width:150px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+.dpad > button,
+.dpad div button{
+
+    width:48px;
+    height:48px;
+
+    margin:3px;
+
+    border-radius:13px;
+
+    background:
+        rgba(
+            8,
+            20,
+            32,
+            .86
+        );
+
+    color:white;
+
+    font-size:18px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+}
+
+
+.dpad div{
+
+    display:flex;
+}
+
+
+.actions{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:7px;
+}
+
+
+.actions button{
+
+    width:45px;
+    height:45px;
+
+    border-radius:13px;
+
+    background:
+        rgba(
+            8,
+            20,
+            32,
+            .88
+        );
+
+    color:white;
+
+    font-weight:bold;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+}
+
+
+.actions .attack{
+
+    width:62px;
+    height:62px;
+
+    border-radius:50%;
+
+    background:#b52e3e;
+
+    font-size:25px;
+}
+
+
+.actions #jumpButton{
+
+    width:58px;
+    height:42px;
+
+    background:#2374c5;
+
+    font-size:10px;
+}
+
+
+/* =========================
+   WINDOWS
+========================= */
+
+#menu,
+#panel,
+#dialog{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            .65
+        );
+
+    backdrop-filter:
+        blur(5px);
+}
+
+
+.menuBox,
+.panelBox,
+.dialogBox{
+
+    position:relative;
+
+    width:min(
+        440px,
+        94vw
+    );
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11283d,
+            #081522
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .13
+        );
+
+    box-shadow:
+        0 20px 70px
+        rgba(
+            0,
+            0,
+            0,
+            .55
+        );
+}
+
+
+.menuBox h1{
+
+    font-size:30px;
+}
+
+
+.menuBox > p{
+
+    margin:
+        4px 0 20px;
+
+    opacity:.5;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+
+.closeButton{
+
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:35px;
+    height:35px;
+
+    border-radius:10px;
+
+    background:#182d40;
+
+    color:white;
+
+    font-size:23px;
+}
+
+
+/* =========================
+   MENU STATS
+========================= */
+
+.menuStat{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:11px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .07
+        );
+
+    font-size:13px;
+}
+
+
+.menuStat span{
+
+    opacity:.65;
+}
+
+
+.menuAction{
+
+    width:100%;
+
+    margin-top:8px;
+
+    padding:13px;
+
+    border-radius:11px;
+
+    background:#17334b;
+
+    color:white;
+
+    text-align:left;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   PANEL
+========================= */
+
+#panelContent{
+
+    margin-top:18px;
+}
+
+
+.panelItem{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:13px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+}
+
+
+.panelItem strong{
+
+    font-size:13px;
+}
+
+
+.panelItem span{
+
+    font-size:12px;
+
+    opacity:.7;
+
+    text-align:right;
+}
+
+
+/* =========================
+   DIALOGUE
+========================= */
+
+.dialogBox{
+
+    text-align:center;
+}
+
+
+.npcIcon{
+
+    width:65px;
+    height:65px;
+
+    margin:
+        0 auto 10px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:18px;
+
+    background:#173b58;
+
+    font-size:30px;
+}
+
+
+#dialogNpc{
+
+    opacity:.5;
+
+    font-size:10px;
+}
+
+
+#dialogTitle{
+
+    margin:6px 0;
+}
+
+
+#dialogText{
+
+    margin:
+        12px 0 18px;
+
+    line-height:1.5;
+
+    opacity:.8;
+
+    font-size:13px;
+}
+
+
+.dialogChoice{
+
+    width:100%;
+
+    margin-top:7px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#1d537a;
+
+    color:white;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+#toast{
+
+    position:fixed;
+
+    z-index:300;
+
+    left:50%;
+    top:16%;
+
+    transform:
+        translate(
+            -50%,
+            -20px
+        );
+
+    padding:11px 17px;
+
+    border-radius:12px;
+
+    background:
+        rgba(
+            5,
+            15,
+            25,
+            .94
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+    font-size:13px;
+}
+
+
+#toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(
+            -50%,
+            0
+        );
+}
+
+
+/* =========================
+   CAMERA TOUCH AREA
+========================= */
+
+#world{
+
+    touch-action:none;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .stats{
+
+        width:180px;
+
+        top:16px;
+    }
+
+
+    .profile{
+
+        transform:
+            scale(.88);
+
+        transform-origin:
+            left top;
+    }
+
+
+    .money{
+
+        top:76px;
+
+        right:15px;
+    }
+
+
+    #questTracker{
+
+        top:85px;
+
+        left:15px;
+
+        width:180px;
+    }
+
+
+    #compass{
+
+        top:130px;
+
+        right:15px;
+    }
+
+
+    #interaction{
+
+        bottom:135px;
+    }
+
+
+    #controls{
+
+        bottom:10px;
+
+        left:10px;
+
+        right:10px;
+    }
+
+
+    .dpad{
+
+        transform:
+            scale(.85);
+
+        transform-origin:
+            left bottom;
+    }
+
+
+    .actions{
+
+        gap:4px;
+
+        transform:
+            scale(.86);
+
+        transform-origin:
+            right bottom;
+    }
+
+}

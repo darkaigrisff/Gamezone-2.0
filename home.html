@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GAME ZONE</title>
+
+    <!-- CSS UNIQUEMENT DE LA PAGE HOME -->
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+<div id="homeRoot">
+
+    <!-- =====================================================
+         ÉCRAN DE CHARGEMENT
+    ====================================================== -->
+    <div id="loadingScreen">
+        <div class="loadingContent">
+            <div class="loadingLogo">GAME ZONE</div>
+
+            <div class="loadingBar">
+                <div id="loadingFill"></div>
+            </div>
+
+            <p id="loadingText">CHARGEMENT...</p>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+    ====================================================== -->
+    <div id="mainContent">
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+        <header class="homeHeader">
+
+            <div class="brand">
+                <span class="brandMain">GAME</span>
+                <span class="brandAccent">ZONE</span>
+            </div>
+
+            <button
+                id="profileButton"
+                class="profileButton"
+                type="button"
+            >
+                <span id="profileAvatar">👤</span>
+                <span id="profileUsername">JOUEUR</span>
+            </button>
+
+        </header>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+        <section class="heroSection">
+
+            <div class="heroContent">
+
+                <div class="heroBadge">
+                    🎮 GAME ZONE
+                </div>
+
+                <h1>
+                    TON UNIVERS<br>
+                    <span>DE JEUX</span>
+                </h1>
+
+                <p>
+                    Découvre nos jeux, relève des défis
+                    et deviens le meilleur joueur.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECHERCHE
+        ================================================== -->
+        <section class="gamesSection">
+
+            <div class="sectionTop">
+
+                <div>
+                    <small class="sectionLabel">
+                        GAME ZONE
+                    </small>
+
+                    <h2>
+                        NOS JEUX
+                    </h2>
+                </div>
+
+                <div class="searchBox">
+
+                    <span>🔎</span>
+
+                    <input
+                        id="gameSearch"
+                        type="search"
+                        placeholder="Rechercher un jeu..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CATÉGORIES
+            ================================================== -->
+            <div class="categories">
+
+                <button
+                    type="button"
+                    class="categoryButton active"
+                    data-category="ALL"
+                >
+                    TOUS
+                </button>
+
+                <button
+                    type="button"
+                    class="categoryButton"
+                    data-category="RPG"
+                >
+                    RPG
+                </button>
+
+                <button
+                    type="button"
+                    class="categoryButton"
+                    data-category="ACTION"
+                >
+                    ACTION
+                </button>
+
+                <button
+                    type="button"
+                    class="categoryButton"
+                    data-category="COURSE"
+                >
+                    COURSE
+                </button>
+
+                <button
+                    type="button"
+                    class="categoryButton"
+                    data-category="PUZZLE"
+                >
+                    PUZZLE
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 GRILLE DES JEUX
+            ================================================== -->
+            <div id="gamesGrid" class="gamesGrid">
+
+
+                <!-- =================================================
+                     JEU 01 — BLOX FRUIT
+                ================================================== -->
+                <article
+                    class="gameCard"
+                    data-category="RPG"
+                    data-title="Blox Fruit"
+                >
+
+                    <div class="gameNumber">
+                        #01
+                    </div>
+
+                    <div class="gameVisual gameBlox">
+                        <span class="gameEmoji">🏝️</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>RPG</span>
+                            <span class="statusAvailable">
+                                DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Blox Fruit
+                        </h3>
+
+                        <p>
+                            Explore un immense monde,
+                            combats des ennemis et deviens
+                            toujours plus puissant.
+                        </p>
+
+                        <a
+                            href="game.html"
+                            class="gameButton"
+                        >
+                            JOUER
+                            <b>›</b>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 02 — SPACE BATTLE
+                ================================================== -->
+                <article
+                    class="gameCard"
+                    data-category="ACTION"
+                    data-title="Space Battle"
+                >
+
+                    <div class="gameNumber">
+                        #02
+                    </div>
+
+                    <div class="gameVisual gameSpace">
+                        <span class="gameEmoji">🚀</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>ACTION</span>
+
+                            <span class="statusAvailable">
+                                DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Space Battle
+                        </h3>
+
+                        <p>
+                            Voyage dans l'espace,
+                            affronte des créatures et
+                            traverse plusieurs chapitres.
+                        </p>
+
+                        <a
+                            href="space.html"
+                            class="gameButton"
+                        >
+                            JOUER
+                            <b>›</b>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 03 — SPEED RACE
+                ================================================== -->
+                <article
+                    class="gameCard"
+                    data-category="COURSE"
+                    data-title="Speed Race"
+                >
+
+                    <div class="gameNumber">
+                        #03
+                    </div>
+
+                    <div class="gameVisual gameSpeed">
+                        <span class="gameEmoji">🏎️</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>COURSE</span>
+
+                            <span class="statusAvailable">
+                                DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Speed Race
+                        </h3>
+
+                        <p>
+                            Choisis ta voiture, affronte
+                            tes concurrents et termine
+                            sur le podium.
+                        </p>
+
+                        <a
+                            href="speed.html"
+                            class="gameButton"
+                        >
+                            JOUER
+                            <b>›</b>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 04 — CROSSWORD
+                ================================================== -->
+                <article
+                    class="gameCard comingSoon"
+                    data-category="PUZZLE"
+                    data-title="Crossword"
+                >
+
+                    <div class="gameNumber">
+                        #04
+                    </div>
+
+                    <div class="gameVisual gameCrossword">
+                        <span class="gameEmoji">🧩</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>PUZZLE</span>
+
+                            <span class="statusSoon">
+                                BIENTÔT DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Crossword
+                        </h3>
+
+                        <p>
+                            Résous des énigmes et
+                            teste ton intelligence.
+                        </p>
+
+                        <div class="gameButton disabledButton">
+                            BIENTÔT
+                            <b>🔒</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 05 — ARCADE
+                ================================================== -->
+                <article
+                    class="gameCard comingSoon"
+                    data-category="ACTION"
+                    data-title="Arcade"
+                >
+
+                    <div class="gameNumber">
+                        #05
+                    </div>
+
+                    <div class="gameVisual gameArcade">
+                        <span class="gameEmoji">🕹️</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>ACTION</span>
+
+                            <span class="statusSoon">
+                                BIENTÔT DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Arcade
+                        </h3>
+
+                        <p>
+                            Une collection de petits jeux
+                            rapides et fun à découvrir.
+                        </p>
+
+                        <div class="gameButton disabledButton">
+                            BIENTÔT
+                            <b>🔒</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 06 — ZOMBIE SURVIVAL
+                ================================================== -->
+                <article
+                    class="gameCard comingSoon"
+                    data-category="ACTION"
+                    data-title="Zombie Survival"
+                >
+
+                    <div class="gameNumber">
+                        #06
+                    </div>
+
+                    <div class="gameVisual gameZombie">
+                        <span class="gameEmoji">🧟</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>ACTION</span>
+
+                            <span class="statusSoon">
+                                BIENTÔT DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Zombie Survival
+                        </h3>
+
+                        <p>
+                            Survis à des vagues d'ennemis
+                            dans une aventure pleine de défis.
+                        </p>
+
+                        <div class="gameButton disabledButton">
+                            BIENTÔT
+                            <b>🔒</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 07 — FOOTBALL STARS
+                ================================================== -->
+                <article
+                    class="gameCard comingSoon"
+                    data-category="ACTION"
+                    data-title="Football Stars"
+                >
+
+                    <div class="gameNumber">
+                        #07
+                    </div>
+
+                    <div class="gameVisual gameFootball">
+                        <span class="gameEmoji">⚽</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>ACTION</span>
+
+                            <span class="statusSoon">
+                                BIENTÔT DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Football Stars
+                        </h3>
+
+                        <p>
+                            Construis ton équipe et
+                            affronte d'autres joueurs.
+                        </p>
+
+                        <div class="gameButton disabledButton">
+                            BIENTÔT
+                            <b>🔒</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =================================================
+                     JEU 08 — MYSTERY WORLD
+                ================================================== -->
+                <article
+                    class="gameCard comingSoon"
+                    data-category="RPG"
+                    data-title="Mystery World"
+                >
+
+                    <div class="gameNumber">
+                        #08
+                    </div>
+
+                    <div class="gameVisual gameMystery">
+                        <span class="gameEmoji">🔮</span>
+                    </div>
+
+                    <div class="gameInfo">
+
+                        <div class="gameMeta">
+                            <span>RPG</span>
+
+                            <span class="statusSoon">
+                                BIENTÔT DISPONIBLE
+                            </span>
+                        </div>
+
+                        <h3>
+                            Mystery World
+                        </h3>
+
+                        <p>
+                            Découvre un monde mystérieux
+                            rempli de secrets et d'aventures.
+                        </p>
+
+                        <div class="gameButton disabledButton">
+                            BIENTÔT
+                            <b>🔒</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 AUCUN RÉSULTAT
+            ================================================== -->
+            <div id="noResults" class="noResults">
+
+                <div class="noResultsIcon">
+                    🔍
+                </div>
+
+                <h3>
+                    Aucun jeu trouvé
+                </h3>
+
+                <p>
+                    Essaie avec un autre nom ou une autre catégorie.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="homeFooter">
+
+            <div class="footerBrand">
+                GAME ZONE
+            </div>
+
+            <p>
+                Ton univers de jeux.
+            </p>
+
+            <span>
+                © 2026 GAME ZONE
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =====================================================
+         POPUP PROFIL
+    ====================================================== -->
+    <div
+        id="profilePopup"
+        class="profilePopup"
+    >
+
+        <div class="profilePopupContent">
+
+            <button
+                id="closeProfile"
+                class="closeProfile"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div class="profileBigAvatar">
+                👤
+            </div>
+
+            <h3 id="popupUsername">
+                JOUEUR
+            </h3>
+
+            <p id="popupEmail">
+                -
+            </p>
+
+            <button
+                id="logoutButton"
+                class="logoutButton"
+                type="button"
+            >
+                DÉCONNEXION
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT HOME
+====================================================== -->
+<script src="home.js"></script>
+
+</body>
+</html>>

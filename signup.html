@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GAME ZONE - Inscription</title>
+
+    <!-- EXACTEMENT LE MÊME CSS QUE INDEX.HTML -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+    <main class="auth-container">
+
+        <div class="logo">
+            🎮 GAME ZONE
+        </div>
+
+        <p class="subtitle">
+            Crée ton compte GAME ZONE
+        </p>
+
+
+        <!-- ========================= -->
+        <!-- NOM -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="name">
+                Nom
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Entre ton nom"
+                autocomplete="name"
+            >
+
+            <div
+                id="nameMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- GMAIL -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="email">
+                Adresse Gmail
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="exemple@gmail.com"
+                autocomplete="email"
+            >
+
+            <div
+                id="emailMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- PSEUDO -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="username">
+                Nom d'utilisateur
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Ton pseudo"
+                autocomplete="username"
+            >
+
+            <div
+                id="usernameMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- TELEPHONE -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="phone">
+                Numéro de téléphone
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Ex : 06000000"
+                autocomplete="tel"
+            >
+
+            <div
+                id="phoneMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- MOT DE PASSE -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="password">
+                Mot de passe
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Crée ton mot de passe"
+                autocomplete="new-password"
+            >
+
+            <div
+                id="passwordMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- CONFIRMATION -->
+        <!-- ========================= -->
+
+        <div class="input-group">
+
+            <label for="confirmPassword">
+                Confirmer le mot de passe
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Retape ton mot de passe"
+                autocomplete="new-password"
+            >
+
+            <div
+                id="confirmMessage"
+                class="field-message"
+            ></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- MESSAGE GENERAL -->
+        <!-- ========================= -->
+
+        <div
+            id="signupMessage"
+            class="message"
+        ></div>
+
+
+        <!-- ========================= -->
+        <!-- CREER LE COMPTE -->
+        <!-- ========================= -->
+
+        <button
+            id="createAccountButton"
+            class="main-button"
+            type="button"
+        >
+            🚀 CRÉER MON COMPTE
+        </button>
+
+
+        <div class="separator">
+            <span>OU</span>
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- RETOUR -->
+        <!-- ========================= -->
+
+        <button
+            id="backLoginButton"
+            class="signup-button"
+            type="button"
+        >
+            ↩️ RETOUR À LA CONNEXION
+        </button>
+
+    </main>
+
+
+    <!-- IMPORTANT : signup.js et PAS script.js -->
+    <script src="signup.js"></script>
+
+</body>
+</html>

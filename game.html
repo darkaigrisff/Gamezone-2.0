@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1,
+maximum-scale=1,
+user-scalable=no">
+
+<title>GAME ZONE — Blox Fruit RPG</title>
+
+<link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+<div id="loading">
+
+    <div class="logo">
+        GAME
+        <strong>ZONE</strong>
+    </div>
+
+    <div class="subtitle">
+        BLOX FRUIT RPG
+    </div>
+
+    <div class="loadBox">
+        <div id="loadBar"></div>
+    </div>
+
+    <p id="loadText">
+        Création du monde...
+    </p>
+
+</div>
+
+
+<canvas id="world"></canvas>
+
+
+<audio
+    id="gameMusic"
+    src="Night_Shade.m4a"
+    loop
+    preload="auto">
+</audio>
+
+
+<div id="hud">
+
+    <div class="profile">
+
+        <div class="avatar">
+            GZ
+        </div>
+
+        <div class="profileInfo">
+            <b>Joueur</b>
+
+            <span>
+                Niveau
+                <strong id="level">1</strong>
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="statBar hp">
+            <div id="hpBar"></div>
+            <span id="hpText">
+                100 / 100
+            </span>
+        </div>
+
+        <div class="statBar xp">
+            <div id="xpBar"></div>
+            <span id="xpText">
+                0 / 100
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="money">
+
+        🪙
+        <b id="coins">500</b>
+
+        &nbsp;&nbsp;
+
+        💜
+        <b id="fragments">0</b>
+
+    </div>
+
+
+    <div id="compass">
+
+        <div class="compassCircle">
+
+            <div id="compassArrow">
+                ▲
+            </div>
+
+        </div>
+
+        <div class="destination">
+
+            <b id="destinationName">
+                Aucun objectif
+            </b>
+
+            <span id="destinationDistance">
+                — m
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button id="menuButton">
+        ☰
+    </button>
+
+
+    <div id="questTracker">
+
+        <div class="questHeader">
+            📜 QUÊTE
+        </div>
+
+        <b id="questName">
+            Aucune quête
+        </b>
+
+        <span id="questProgress">
+            Parle à un Maître des quêtes.
+        </span>
+
+    </div>
+
+
+    <div id="interaction">
+
+        <small>
+            INTERACTION
+        </small>
+
+        <b id="interactionText">
+            PNJ
+        </b>
+
+        <button id="interactionButton">
+            PARLER
+        </button>
+
+    </div>
+
+
+    <div id="controls">
+
+        <div class="dpad">
+
+            <button data-key="up">
+                ▲
+            </button>
+
+            <div>
+
+                <button data-key="left">
+                    ◀
+                </button>
+
+                <button data-key="down">
+                    ▼
+                </button>
+
+                <button data-key="right">
+                    ▶
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button id="jumpButton">
+                JUMP
+            </button>
+
+            <button
+                id="attackButton"
+                class="attack">
+                ✦
+            </button>
+
+            <button data-skill="Z">
+                Z
+            </button>
+
+            <button data-skill="X">
+                X
+            </button>
+
+            <button data-skill="C">
+                C
+            </button>
+
+            <button data-skill="V">
+                V
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="menu">
+
+    <div class="menuBox">
+
+        <button
+            id="closeMenu"
+            class="closeButton">
+            ×
+        </button>
+
+        <h1>
+            GAME ZONE
+        </h1>
+
+        <p>
+            MONDE RPG 3D
+        </p>
+
+
+        <div class="menuStat">
+
+            <span>
+                Île
+            </span>
+
+            <b id="currentIsland">
+                Île Amateur
+            </b>
+
+        </div>
+
+
+        <div class="menuStat">
+
+            <span>
+                Mer
+            </span>
+
+            <b id="currentSea">
+                Sea 1
+            </b>
+
+        </div>
+
+
+        <div class="menuStat">
+
+            <span>
+                Niveau
+            </span>
+
+            <b id="menuLevel">
+                1
+            </b>
+
+        </div>
+
+
+        <div class="menuStat">
+
+            <span>
+                Quêtes terminées
+            </span>
+
+            <b id="questsDone">
+                0
+            </b>
+
+        </div>
+
+
+        <div class="menuStat">
+
+            <span>
+                Ennemis vaincus
+            </span>
+
+            <b id="kills">
+                0
+            </b>
+
+        </div>
+
+
+        <button
+            class="menuAction"
+            data-panel="stats">
+            📊 Stats
+        </button>
+
+        <button
+            class="menuAction"
+            data-panel="inventory">
+            🎒 Inventaire
+        </button>
+
+        <button
+            class="menuAction"
+            data-panel="fruits">
+            🍈 Fruits
+        </button>
+
+        <button
+            class="menuAction"
+            data-panel="shops">
+            🛒 Boutiques
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="panel">
+
+    <div class="panelBox">
+
+        <button
+            id="closePanel"
+            class="closeButton">
+            ×
+        </button>
+
+        <h2 id="panelTitle">
+            Stats
+        </h2>
+
+        <div id="panelContent"></div>
+
+    </div>
+
+</div>
+
+
+<div id="dialog">
+
+    <div class="dialogBox">
+
+        <button
+            id="closeDialog"
+            class="closeButton">
+            ×
+        </button>
+
+        <div
+            class="npcIcon"
+            id="npcIcon">
+            ?
+        </div>
+
+        <small id="dialogNpc">
+            PNJ
+        </small>
+
+        <h2 id="dialogTitle">
+            Bonjour
+        </h2>
+
+        <p id="dialogText"></p>
+
+        <div id="dialogChoices"></div>
+
+    </div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+<script src="game.js"></script>
+
+</body>
+</html>

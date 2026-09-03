@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>GAME ZONE — Space Battle</title>
+
+    <link rel="stylesheet" href="space.css">
+</head>
+
+<body>
+
+<div id="gameRoot">
+
+    <!-- AUDIO -->
+    <audio id="gameMusic" preload="auto" loop></audio>
+
+
+    <!-- =========================
+         LOBBY
+    ========================== -->
+
+    <section id="lobbyScreen" class="screen active">
+
+        <div class="spaceStars"></div>
+
+        <div class="lobbyPlanet planetOne"></div>
+        <div class="lobbyPlanet planetTwo"></div>
+
+        <div class="lobbyContent">
+
+            <div class="gameLogo">
+
+                <div class="logoSmall">
+                    GAME ZONE
+                </div>
+
+                <h1>
+                    SPACE <span>BATTLE</span>
+                </h1>
+
+                <div class="logoLine"></div>
+
+                <p>
+                    THE GALACTIC ADVENTURE
+                </p>
+
+            </div>
+
+
+            <div class="lobbyPanel">
+
+                <div class="panelTitle">
+                    <span></span>
+                    SPACE BATTLE
+                    <span></span>
+                </div>
+
+                <p class="panelDescription">
+                    Explore des mondes inconnus,
+                    combats des créatures et deviens
+                    le plus puissant aventurier spatial.
+                </p>
+
+                <div class="currencyPreview">
+
+                    <div class="currencyItem">
+                        <span class="coinIcon">T</span>
+                        <strong id="lobbyCoins">0</strong>
+                    </div>
+
+                    <div class="currencyItem">
+                        <span class="fragmentIcon">◆</span>
+                        <strong id="lobbyFragments">0</strong>
+                    </div>
+
+                </div>
+
+                <button id="startButton" class="mainButton">
+                    <span>COMMENCER</span>
+                    <b>›</b>
+                </button>
+
+            </div>
+
+
+            <div class="lobbyFooter">
+                <span>GAME ZONE</span>
+                <span>•</span>
+                <span>SPACE BATTLE</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPITRES
+    ========================== -->
+
+    <section id="chapterScreen" class="screen">
+
+        <div class="screenBackground"></div>
+
+        <header class="menuHeader">
+
+            <button class="backButton" data-back="lobby">
+                ‹
+            </button>
+
+            <div>
+                <small>SPACE BATTLE</small>
+                <h2>CHOISIR UN CHAPITRE</h2>
+            </div>
+
+            <div class="menuCurrency">
+                <span>T</span>
+                <strong id="chapterCoins">0</strong>
+            </div>
+
+        </header>
+
+
+        <main class="chapterGrid">
+
+            <button class="chapterCard selected" data-chapter="1">
+
+                <div class="chapterNumber">01</div>
+                <div class="chapterIcon">🌑</div>
+
+                <div class="chapterInfo">
+
+                    <small>CHAPITRE 1</small>
+
+                    <h3>PLANÈTE NOCTURNE</h3>
+
+                    <p>
+                        Stations abandonnées,
+                        créatures du vide et drones.
+                    </p>
+
+                </div>
+
+                <span class="chapterArrow">›</span>
+
+            </button>
+
+
+            <button class="chapterCard" data-chapter="2">
+
+                <div class="chapterNumber">02</div>
+                <div class="chapterIcon">❄️</div>
+
+                <div class="chapterInfo">
+
+                    <small>CHAPITRE 2</small>
+
+                    <h3>ROYAUME DE GLACE</h3>
+
+                    <p>
+                        Tempêtes, glaciers et
+                        créatures glacées.
+                    </p>
+
+                </div>
+
+                <span class="chapterArrow">›</span>
+
+            </button>
+
+
+            <button class="chapterCard" data-chapter="3">
+
+                <div class="chapterNumber">03</div>
+                <div class="chapterIcon">🌳</div>
+
+                <div class="chapterInfo">
+
+                    <small>CHAPITRE 3</small>
+
+                    <h3>MONDE SAUVAGE</h3>
+
+                    <p>
+                        Jungle, marais, racines
+                        et créatures.
+                    </p>
+
+                </div>
+
+                <span class="chapterArrow">›</span>
+
+            </button>
+
+
+            <button class="chapterCard" data-chapter="4">
+
+                <div class="chapterNumber">04</div>
+                <div class="chapterIcon">🔮</div>
+
+                <div class="chapterInfo">
+
+                    <small>CHAPITRE 4</small>
+
+                    <h3>TERRE RPG</h3>
+
+                    <p>
+                        Ruines, magie, cristaux
+                        et dragons.
+                    </p>
+
+                </div>
+
+                <span class="chapterArrow">›</span>
+
+            </button>
+
+
+            <button class="chapterCard bossChapter" data-chapter="5">
+
+                <div class="chapterNumber">05</div>
+                <div class="chapterIcon">👑</div>
+
+                <div class="chapterInfo">
+
+                    <small>CHAPITRE FINAL</small>
+
+                    <h3>GUERRE DES BOSS</h3>
+
+                    <p>
+                        Des combats gigantesques
+                        contre les Boss.
+                    </p>
+
+                </div>
+
+                <span class="chapterArrow">›</span>
+
+            </button>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         NIVEAUX
+    ========================== -->
+
+    <section id="levelScreen" class="screen">
+
+        <div class="screenBackground"></div>
+
+        <header class="menuHeader">
+
+            <button class="backButton" data-back="chapter">
+                ‹
+            </button>
+
+            <div>
+
+                <small id="levelChapterLabel">
+                    CHAPITRE 1
+                </small>
+
+                <h2 id="levelChapterName">
+                    PLANÈTE NOCTURNE
+                </h2>
+
+            </div>
+
+            <div class="menuCurrency">
+                <span>T</span>
+                <strong id="levelCoins">0</strong>
+            </div>
+
+        </header>
+
+
+        <div class="levelIntro">
+
+            <div
+                id="selectedChapterIcon"
+                class="selectedChapterIcon"
+            >
+                🌑
+            </div>
+
+            <div>
+
+                <span>NIVEAUX DISPONIBLES</span>
+
+                <p id="levelDescription">
+                    Explore la planète nocturne.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <main id="levelGrid" class="levelGrid"></main>
+
+    </section>
+
+
+    <!-- =========================
+         JEU
+    ========================== -->
+
+    <section id="gameScreen" class="screen gameScreen">
+
+        <canvas id="gameCanvas"></canvas>
+
+
+        <!-- HUD -->
+
+        <div class="hud">
+
+            <div class="hudTopLeft">
+
+                <div class="playerHealth">
+
+                    <div class="hudCharacter">
+                        <span id="hudCharacterFace">●</span>
+                    </div>
+
+                    <div class="healthBox">
+
+                        <div class="healthText">
+                            <span>HP</span>
+                            <strong id="healthText">4 / 4</strong>
+                        </div>
+
+                        <div class="healthBar">
+                            <div id="healthFill"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hudCenter">
+
+                <div id="chapterHud">
+                    CHAPTER 1
+                </div>
+
+                <strong id="levelHud">
+                    LEVEL 1
+                </strong>
+
+            </div>
+
+
+            <div class="hudTopRight">
+
+                <div class="hudCurrency">
+                    <span>T</span>
+                    <strong id="gameCoins">0</strong>
+                </div>
+
+                <div class="hudCurrency purple">
+                    <span>◆</span>
+                    <strong id="gameFragments">0</strong>
+                </div>
+
+                <button id="pauseButton" class="pauseButton">
+                    II
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTROLES -->
+
+        <div id="controls">
+
+            <div class="dpad">
+
+                <button data-control="left" class="control left">
+                    ◀
+                </button>
+
+                <button data-control="right" class="control right">
+                    ▶
+                </button>
+
+            </div>
+
+
+            <div class="actionButtons">
+
+                <button
+                    data-control="jump"
+                    class="control jumpButton"
+                >
+                    SAUT
+                </button>
+
+                <button
+                    data-control="attack"
+                    class="control attackButton"
+                >
+                    ATTAQUE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAUSE -->
+
+        <div id="pauseOverlay" class="overlay">
+
+            <div class="pausePanel">
+
+                <div class="pauseTitle">
+                    JEU EN PAUSE
+                </div>
+
+                <button id="resumeButton" class="mainButton">
+                    REPRENDRE
+                </button>
+
+                <button id="restartButton" class="secondaryButton">
+                    RECOMMENCER
+                </button>
+
+                <button id="quitButton" class="secondaryButton">
+                    QUITTER LE NIVEAU
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTAT -->
+
+        <div id="resultOverlay" class="overlay">
+
+            <div class="resultPanel">
+
+                <div id="resultIcon" class="resultIcon">
+                    ★
+                </div>
+
+                <div id="resultTitle" class="resultTitle">
+                    NIVEAU TERMINÉ
+                </div>
+
+                <p id="resultMessage">
+                    Bravo !
+                </p>
+
+                <div class="rewardBox">
+
+                    <div>
+                        <span>T</span>
+                        <strong id="rewardCoins">0</strong>
+                    </div>
+
+                    <div>
+                        <span>◆</span>
+                        <strong id="rewardFragments">0</strong>
+                    </div>
+
+                </div>
+
+                <button id="nextLevelButton" class="mainButton">
+                    NIVEAU SUIVANT
+                    <b>›</b>
+                </button>
+
+                <button id="returnLevelsButton" class="secondaryButton">
+                    CHOISIR UN NIVEAU
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PORTRAIT -->
+
+        <div id="orientationWarning">
+
+            <div class="rotateIcon">
+                ↻
+            </div>
+
+            <h2>
+                TOURNE TON TÉLÉPHONE
+            </h2>
+
+            <p>
+                Space Battle se joue en mode paysage.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="space.js"></script>
+
+</body>
+</html>
